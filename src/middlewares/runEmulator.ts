@@ -1,4 +1,5 @@
 import {getEmulator, runningEmulator} from "../emulator/getEmulator";
+import {singletonQueue as queue} from "../queue/models/queue";
 
 let countRequest:number;
 
@@ -27,6 +28,8 @@ export async function runEmulator(ctx, next) {
         await runningEmulator.browser.close();
         runningEmulator.actual = false;
         countRequest = 0;
+
+        queue.removeElement(ctx.payload.queueElement);
 
         ctx.status = 400;
         ctx.body = {
