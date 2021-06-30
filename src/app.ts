@@ -19,6 +19,6 @@ router.all("/", (ctx) => {
 router.post("/product", validateRequest, queueRequests, runEmulator, parsingImperia, queueRemoveElement);
 router.post("/url", validateRequest, queueRequests, runEmulator, getPageContent, queueRemoveElement);
 
-app.listen(8080, () => {
+app.listen(80, () => {
     console.log("Web-server for parsing started.")
 });
