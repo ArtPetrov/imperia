@@ -13,6 +13,9 @@ const router: Router = new Router();
 app.use(bodyParse({jsonLimit: '32mb'}));
 app.use(router.routes());
 
+router.all("/", (ctx) => {
+    ctx.body = "Server run.";
+})
 router.post("/product", validateRequest, queueRequests, runEmulator, parsingImperia, queueRemoveElement);
 router.post("/url", validateRequest, queueRequests, runEmulator, getPageContent, queueRemoveElement);
 
