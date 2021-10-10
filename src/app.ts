@@ -15,11 +15,11 @@ app.use(bodyParse({jsonLimit: '32mb'}));
 app.use(router.routes());
 
 router.all("/", (ctx) => {
-    ctx.body = "Server run.";
+    ctx.body = `Server run. First request waiting: ${env.TIMEOUT_FIRST_LOAD || 'default' } sec`;
 })
 router.post("/product", validateRequest, queueRequests, runEmulator, parsingImperia, queueRemoveElement);
 router.post("/url", validateRequest, queueRequests, runEmulator, getPageContent, queueRemoveElement);
 
 app.listen(env.PORT || 8080, () => {
-    console.log("Web-server for parsing started.")
+    console.log(`Web-server for parsing started.`)
 });

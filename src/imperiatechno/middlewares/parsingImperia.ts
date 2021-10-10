@@ -1,7 +1,8 @@
+import {env} from "process";
 import parserForProduct from "../useCase/parserForProduct";
 
 export async function parsingImperia(ctx, next) {
-    await ctx.emulator.page.goto(ctx.payload.url, {timeout: 53000});
+    await ctx.emulator.page.goto(ctx.payload.url, {timeout: parseInt(env.TIMEOUT_FIRST_LOAD) || 13000});
 
     try {
         await ctx.emulator.page.waitForSelector('div.item-header > h1', {timeout: 5000});
