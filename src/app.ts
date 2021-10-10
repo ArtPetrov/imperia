@@ -1,3 +1,4 @@
+import {env} from "process";
 import Koa from "koa";
 import Router from "koa-router";
 import bodyParse from "koa-bodyparser";
@@ -19,6 +20,6 @@ router.all("/", (ctx) => {
 router.post("/product", validateRequest, queueRequests, runEmulator, parsingImperia, queueRemoveElement);
 router.post("/url", validateRequest, queueRequests, runEmulator, getPageContent, queueRemoveElement);
 
-app.listen(8080, () => {
+app.listen(env.PORT || 8080, () => {
     console.log("Web-server for parsing started.")
 });

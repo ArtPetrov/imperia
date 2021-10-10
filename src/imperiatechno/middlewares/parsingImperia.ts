@@ -6,7 +6,7 @@ export async function parsingImperia(ctx, next) {
     await ctx.emulator.page.goto(ctx.payload.url, {timeout: 10000});
 
     try {
-        await ctx.emulator.page.waitForSelector('div.product_page_wrapper > h1', {timeout: 5000});
+        await ctx.emulator.page.waitForSelector('div.item-header > h1', {timeout: 5000});
     } catch (e) {
         throw new Error('Not found page with product. Change URL or change Proxy.');
     }

@@ -7,6 +7,7 @@ class Property {
 class Photo {
     public name: string;
     public content: string | null;
+    public url: string | null;
 }
 
 export class Product {
@@ -24,10 +25,11 @@ export class Product {
         this.properties.push(property);
     }
 
-    public addPhoto(name: string, content: string | null = null): void {
+    public addPhoto(name: string, content: string | null = null, url: string | null = null): void {
         const photo = new Photo();
         photo.name = name;
         photo.content = content;
+        photo.url = url;
         this.photos.push(photo);
     }
 

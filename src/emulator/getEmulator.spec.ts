@@ -1,19 +1,19 @@
 import {getEmulator} from './getEmulator';
 
-const link: string = 'https://ya.ru';
+const link: string = 'https://2ip.ru';
 const status: number = 200;
 
 describe('Webkit browser', () => {
 
     it('should run mobile version', async () => {
-        const emulator = await getEmulator('mobile', true, null, 'webkit');
+        const emulator = await getEmulator('mobile', false, null, 'webkit');
         const result = await emulator.page.goto(link);
         expect(await result.status()).toBe(status);
         await emulator.browser.close();
     });
 
     it('should run desktop version', async () => {
-        const emulator = await getEmulator('mobile', true, null, 'chromium');
+        const emulator = await getEmulator('mobile', false, null, 'chromium');
         const result = await emulator.page.goto(link);
         expect(await result.status()).toBe(status);
         await emulator.browser.close();
